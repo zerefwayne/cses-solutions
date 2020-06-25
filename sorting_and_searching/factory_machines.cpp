@@ -17,14 +17,15 @@ void task()
     for (lli i = 0; i < lenMachines; i++)
         cin >> machines[i];
     lli minTime = *min_element(machines.begin(), machines.end());
-    lli minTimeRequired = minTime * lenProducts;
+    lli minTimeRequired = minTime * lenProducts + 1;
 
     lli productsCreated = 0;
 
     lli l = 0;
     lli r = minTimeRequired;
+    lli ans = 0;
 
-    while (l < r)
+    while (l <= r)
     {
 
         lli m = l + (r - l) / 2;
@@ -36,22 +37,18 @@ void task()
             productsCreated += floor(m / machines[i]);
         }
 
-        if (productsCreated == lenProducts)
-        {
-            cout << m << '\n';
-            return;
-        }
-        else if (productsCreated < lenProducts)
+        if (productsCreated < lenProducts)
         {
             l = m + 1;
         }
         else
         {
-            r = m;
+            ans = m;
+            r = m - 1;
         }
     }
 
-    cout << l << '\n';
+    cout << ans << '\n';
 }
 
 int main()
