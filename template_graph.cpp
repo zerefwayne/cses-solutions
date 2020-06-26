@@ -7,6 +7,7 @@ typedef long long int lli;
 typedef vector<long long int> vlli;
 typedef vector<int> vi;
 typedef stack<long long int> slli;
+typedef pair<lli, lli> plli;
 
 class Graph {
 
