@@ -43,6 +43,12 @@ class Graph {
 
         }
 
+        void solve() {
+
+            
+
+        }
+
 
 
 };
