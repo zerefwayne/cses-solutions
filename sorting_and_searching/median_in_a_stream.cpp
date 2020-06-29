@@ -84,10 +84,60 @@ void task()
         ans.emplace_back(currentMedian);
     }
 
-    for(auto num: ans) {
-        cout<<num<<'\n';
+    for (auto num : ans)
+    {
+        cout << num << '\n';
+    }
+}
+
+void task2()
+{
+
+    lli lenStream;
+    cin >> lenStream;
+    priority_queue<lli> maxHeap;
+    priority_queue<lli, vector<lli>, greater<lli>> minHeap;
+
+    lli currentMedian = 0;
+
+    lli number;
+
+    vector<lli> ans;
+
+    while (lenStream--)
+    {
+
+        cin >> number;
+
+        maxHeap.push(number);
+
+        minHeap.push(maxHeap.top());
+        maxHeap.pop();
+
+        if (maxHeap.size() < minHeap.size())
+        {
+            maxHeap.push(minHeap.top());
+            minHeap.pop();
+        }
+
+        if (maxHeap.size() == minHeap.size())
+        {
+            currentMedian = (lli)floor((maxHeap.top() + minHeap.top()) / 2.0);
+        }
+        else
+        {
+            currentMedian = maxHeap.top();
+        }
+
+        ans.push_back(currentMedian);
     }
 
+    for (auto a : ans)
+    {
+        cout << a << '\t';
+    }
+
+    cout << '\n';
 }
 
 int main()
@@ -96,7 +146,7 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    task();
+    task2();
 
     return 0;
 }
